@@ -1,0 +1,8 @@
+query ``nada'' returned null
+--- found in 0 documents
+query ``happy'' returned [doc3, doc2, doc1]
+--- found in 3 documents
+query ``fish'' returned [doc3, doc2]
+--- found in 2 documents
+query ``happy fish'' returned [doc3, doc2]
+--- found in 2 documents

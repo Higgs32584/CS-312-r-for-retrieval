@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# a bash script to run a simple test and compare the output with the oracle
+
+# source lives in parent directory
+cd ../
+
+java CLI ../testing/stoplist ../testing/doc1 ../testing/doc2 ../testing/doc3 < ../testing/queries | grep -v @@ > ../testing/out 
+
+cd ../testing
+
+diff oracle out
+if [ $? -eq 0 ];
+then
+   echo "pass!"
+else
+   echo "fail :("
+fi
+
