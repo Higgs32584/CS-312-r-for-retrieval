@@ -1,3 +1,10 @@
+/**
+* This is my code! It’s goal is to ....
+* CS 312 - Assignment 9
+* @Michael Higgins
+* Version 1.0
+*/
+
 import java.util.HashSet;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -22,20 +29,19 @@ public class CLI {
 		}
 	if(args[0].equals("-d")){
 	
-		stopListPath = args[0];
+		stopListPath = args[1];
 
 		for(int i = 2;i<args.length;i++){
 			
 			DocQueue.add(args[i]);
 		
 		}
-	
+	Setup s= new Setup(DocQueue,stopListPath);
+	System.out.println(s.returnIndex());
 	}
-		
-	Setup s = new Setup(DocQueue, stopListPath);
 	}
 	//if(args[0].equals("-d")){
-	
+	System.out.print("Can yall work??");
 
     }
 }

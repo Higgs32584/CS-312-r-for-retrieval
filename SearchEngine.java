@@ -1,3 +1,10 @@
+/**
+* This is my code! It’s goal is to ....
+* CS 312 - Assignment 9
+* @Michael Higgins
+* Version 1.0
+*/
+
 import java.util.HashMap;
 import java.util.Set;
 import java.util.HashSet;
