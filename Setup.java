@@ -62,6 +62,8 @@ public class Setup {
 
             Scanner myReader = new Scanner(doc);
 
+	    
+
             while(myReader.hasNextLine()) {
 
                 String[] priority = myReader.nextLine().split(" ");

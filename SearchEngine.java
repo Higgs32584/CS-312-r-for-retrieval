@@ -8,6 +8,7 @@
 
 import java.util.HashMap;
 import java.util.Set;
+import java.util.HashSet;
 
 
 public class SearchEngine extends HashMap<String,Set<String>>{
@@ -22,14 +23,37 @@ public class SearchEngine extends HashMap<String,Set<String>>{
     }
     public String searchSingle(String search){
 
-        if(reverseIndex.containsKey(search)){
-            
-		return "Word "+ search+" Found in "+reverseIndex.get(search).size()+ "Documents";
+        Set<String> docs = new HashSet<String>();
+	    
+	 if(reverseIndex.containsKey(search)){
+		
+		docs = reverseIndex.get(search);
+
+
+		return "--- found in " + (docs == null ? 0 : docs.size()) +"documents";
 
         }
-	return "Word"+search+"Found in 0 Documents";
+	return "--- found in " + (docs == null ? 0 : docs.size()) +"documents";
 
 
+
+    }
+        public String searchMulti(String search){
+        
+        String[] WordList = search.split(" ");
+
+        Set<String> docs = new HashSet<String>();
+
+            docs = reverseIndex.get(WordList[0]);
+            
+            for(int i = 1;i<WordList.length;i++){
+                
+                if(reverseIndex.containsKey(WordList[i])){
+                    
+                    docs.retainAll(reverseIndex.get(WordList[i]));
+                }
+            }
+            return docs.toString();
     }
 }
 

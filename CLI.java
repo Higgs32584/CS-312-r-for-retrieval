@@ -51,17 +51,17 @@ public class CLI {
 	
 	long elapsedTime = stopTime - startTime;
 	
-	System.out.println("Building the Inverted Index took" + elapsedTime + "ms");
+	System.out.println("@@ build time " + elapsedTime + "ms");
 	
 	Scanner sc = new Scanner(System.in);
 	
-	String input = sc.next();
+	String input = sc.nextLine();
 	
 	long startTime2 = System.currentTimeMillis();
 	
 	SearchEngine se = new SearchEngine(s);
 
-	System.out.println(se.searchSingle(input));
+	System.out.println(se.searchMulti(input));
 
 	if(args[0].equals("-d")){
 	
