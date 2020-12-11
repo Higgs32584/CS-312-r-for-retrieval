@@ -5,21 +5,32 @@
 * Version 1.0
 */
 
+
 import java.util.HashMap;
 import java.util.Set;
-import java.util.HashSet;
-public class SearchEngine{
-	HashMap<String, Set<String> > map;
-	public SearchEngine(HashMap<String,Set<String>> map){
-	this.map=map;
-	
-	}
-	public void searchSingle(String search){
-	if(map.containsKey(search)){
-		System.out.print(map.get(search).toString());
-	
-	}
-	
-	
-	}
-	}
+
+
+public class SearchEngine extends HashMap<String,Set<String>>{
+
+    HashMap<String,Set<String>> reverseIndex;
+
+
+    public SearchEngine(Setup s){
+
+        reverseIndex = s.returnIndexAsMap();
+
+    }
+    public String searchSingle(String search){
+
+        if(reverseIndex.containsKey(search)){
+            
+		return "Word "+ search+" Found in "+reverseIndex.get(search).size()+ "Documents";
+
+        }
+	return "Word"+search+"Found in 0 Documents";
+
+
+    }
+}
+
+

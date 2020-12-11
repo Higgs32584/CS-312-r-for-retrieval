@@ -1,88 +1,122 @@
 /**
-* This is my code! It’s goal is to ....
-* CS 312 - Assignment 9
-* @Michael Higgins
-* version 1.0
-*/
+ * This is my code! Itâ€™s goal is to ....
+ * CS 312 - Assignment 9
+ * @Michael Higgins
+ * version 1.1
+ */
 
-import java.util.HashSet;
+import java.util.Set;
 import java.util.HashMap;
-import java.util.List;
+import java.util.HashSet;
+import java.util.PriorityQueue;
 import java.util.Scanner;
 import java.io.File;
-import java.util.Set;
-import java.util.PriorityQueue;
 import java.io.FileNotFoundException;
+
 public class Setup {
-	
-	HashMap<String,Set<String>> map;
-	
-	HashSet<String> stopList;
 
-	public Setup(PriorityQueue<String> docList, String stopList) throws FileNotFoundException{
-		
-		setupStoplist(stopList);
+    HashMap<String,Set<String>> map;
 
-		while(!docList.peek().equals( null)){
-	
-		setupFile(docList.poll());
-		}	
-			
-	}
-	
-	public void setupStoplist(String stopAdr) throws FileNotFoundException{
-	
-	File stopFile = new File(stopAdr);
-        
+    HashSet<String> stopList;
+
+    public Setup(PriorityQueue<String> docList, String stopAdr) throws FileNotFoundException{
+
+        stopList = setupStoplist(stopAdr);
+
+        map = setupFile(docList);
+
+    }
+
+    public HashSet<String> setupStoplist(String stopAdr) throws FileNotFoundException{
+
+        File stopFile = new File(stopAdr);
+
         Scanner myStopReader = new Scanner(stopFile);
+
+        String data = "";
+
+        HashSet<String> localSet = new HashSet<String>();
 
         while (myStopReader.hasNextLine()) {
 
-            String data = myStopReader.nextLine();
 
-            stopList.add(data);
+            data = myStopReader.nextLine();
+            
+            localSet.add(data);
 
         }
         myStopReader.close();
-}
-	public void setupFile(String docAddress) throws FileNotFoundException{
-	
-	File doc = new File(docAddress);
 
-	Scanner myReader = new Scanner(doc);
+        return localSet;
+    }
 
-	while(myReader.hasNextLine()){
-		
-		String data = myReader.nextLine();
-		
-		data = data.toLowerCase();
-		
-		if(!stopList.contains(data)){
-		
-			if(map.get(data).equals(null)){
-		
-				HashSet<String> Collection = new HashSet();
-				
-				Collection.add(docAddress);
-				
-				map.put(data,Collection);
-			}
-			else{
-			map.get(data).add(docAddress);
-			
-			
-			}
 
-		}
-	
-	}
-	
 
-	}
-	public String returnIndex(){
-	return map.toString();
-		
-	} 
+    public HashMap<String,Set<String>>  setupFile(PriorityQueue<String> docQueue) throws FileNotFoundException{
+
+        HashMap<String,Set<String>> map = new HashMap<String, Set<String>>();
+
+        while(docQueue.peek() != null){
+
+            File doc = new File(docQueue.poll());
+
+            Scanner myReader = new Scanner(doc);
+
+            while(myReader.hasNextLine()) {
+
+                String[] priority = myReader.nextLine().split(" ");
+
+                for (String data : priority) {
+
+                    data = data.toLowerCase();
+
+
+                    if (checkStopList(data)) {
+
+                        if (!map.containsKey(data)) {
+
+                            HashSet<String> Collection = newCollection(doc.getName());
+
+                            map.put(data, Collection);
+                        } else {
+                            map.get(data).add(doc.getName());
+
+
+                        }
+
+                    }
+
+                }
+
+            }
+        }
+        return map;
+    }
+    public boolean checkStopList(String word){
+
+        return !stopList.contains(word);
+
+    }
+    public String returnIndexasString(){
+
+        return map.toString();
+
+    }
+    public HashSet<String> newCollection(String adr){
+
+        HashSet<String> set = new HashSet<String>();
+
+        set.add(adr);
+
+        return set;
+
+
+    }
+    public HashMap<String,Set<String>> returnIndexAsMap(){
+
+        return map;
+
+    }
 }
 
 
