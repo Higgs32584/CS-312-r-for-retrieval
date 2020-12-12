@@ -5,10 +5,8 @@
 * Version 1.0
 */
 
-import java.util.HashSet;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-import java.util.List;
 import java.util.PriorityQueue;
 public class CLI {
     public static void main(String[] args) throws FileNotFoundException{
@@ -61,7 +59,7 @@ public class CLI {
 	
 	SearchEngine se = new SearchEngine(s);
 
-	System.out.println(se.searchMulti(input));
+	System.out.println(se.search(input));
 
 	if(args[0].equals("-d")){
 	

@@ -5,14 +5,13 @@
  * version 1.1
  */
 
-import java.util.Set;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.PriorityQueue;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
-
+import java.util.Set;
 public class Setup {
 
     HashMap<String,Set<String>> map;

@@ -21,30 +21,11 @@ public class SearchEngine extends HashMap<String,Set<String>>{
         reverseIndex = s.returnIndexAsMap();
 
     }
-    public String searchSingle(String search){
-
-        Set<String> docs = new HashSet<String>();
-	    
-	 if(reverseIndex.containsKey(search)){
-		
-		docs = reverseIndex.get(search);
-
-
-		return "--- found in " + (docs == null ? 0 : docs.size()) +"documents";
-
-        }
-	return "--- found in " + (docs == null ? 0 : docs.size()) +"documents";
-
-
-
-    }
-        public String searchMulti(String search){
+    public String search(String search){
         
         String[] WordList = search.split(" ");
 
-        Set<String> docs = new HashSet<String>();
-
-            docs = reverseIndex.get(WordList[0]);
+        Set<String> docs = reverseIndex.getOrDefault(WordList[0],null);
             
             for(int i = 1;i<WordList.length;i++){
                 
@@ -52,8 +33,14 @@ public class SearchEngine extends HashMap<String,Set<String>>{
                     
                     docs.retainAll(reverseIndex.get(WordList[i]));
                 }
-            }
-            return docs.toString();
+		if(!reverseIndex.containsKey(WordList[i])){
+		
+			return "Words not present in list";
+		
+		}
+
+           }
+	   return docs.toString();
     }
 }
 
