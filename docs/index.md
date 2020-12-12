@@ -1,27 +1,19 @@
-## Welcome to GitHub Pages
-
-You can use the [editor on GitHub](https://github.com/f20-cs312-loyola/r-for-retrieval-Higgs32584/edit/master/docs/index.md) to maintain and preview the content for your website in Markdown files.
+https://github.com/f20-cs312-loyola/r-for-retrieval-Higgs32584/edit/master/docs/index.md
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+# SearchEngine
+-these methods includes a single search query, and a multi search Query!!
+- LOG-N COMPLEXITY:
+Single word: O(1)
+Multi word: O(1)
+## Setup
+reads the docs and sets up query
+O(n)
+### CLI
+ - takes the command lines of the program, and runs such programs
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-SearchEngine
-## Header 2
-Setup
-### Header 3
-CLI
-- Bulleted
-- List
-
-1. Numbered
-2. List
 
 **Bold** and _Italic_ and `Code` text
 
