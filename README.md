@@ -68,3 +68,13 @@ The JavaDoc for the game OneRowNim can be fount at
 The directory `testing` includes a simple test case.  Note that the script 
 `test0` assumes that your code is in its parent directory.
 
+
+
+#README
+compile, run this command, then input. Search is same for single and multi query
+java CLI -d /home/mjhiggins2/cs312/r-for-retrieval-Higgs32584/testing/stoplist /home/mjhiggins2/cs312/r-for-retrieval-Higgs32584/testing/doc1 /home/mjhiggins2/cs312/r-for-retrieval-Higgs32584/testing/doc2 /home/mjhiggins2/cs312/r-for-retrieval-Higgs32584/testing/doc3
+java CLI /home/mjhiggins2/cs312/r-for-retrieval-Higgs32584/testing/stoplist /home/mjhiggins2/cs312/r-for-retrieval-Higgs32584/testing/doc1 /home/mjhiggins2/cs312/r-for-retrieval-Higgs32584/testing/doc2 /home/mjhiggins2/cs312/r-for-retrieval-Higgs32584/testing/doc3
+
+
+
+
